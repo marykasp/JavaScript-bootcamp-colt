@@ -31,9 +31,25 @@ const multiply = (x, y) => {
 // IMPLICIT RETURN - don't have to write the return keyword itself, one line expressions
 const square = n => n * n
 
-const squareEven = n => (
-  if (n < 0) {
-    return false;
-  }
-  n * n;
-)
+const nums = [1, 2, 3, 4, 5, 6, 7];
+
+// anonymous function
+const doubles1 = nums.map(function (n) {
+  return n * 2;
+})
+
+// arrow function
+const doubles2 = nums.map(n => {
+  return n * 2
+})
+
+// arrow function with implicit return
+const doubles3 = nums.map(n => n * 2)
+
+const parityList = nums.map(function(n) {
+  if (n % 2 === 0) return 'even';
+  return 'odd';
+})
+
+// if-else statment to ternary operator to be one line expression can use implicit return
+const parityList2 = nums.map(n => n % 2 === 0 ? 'even' : 'odd')
