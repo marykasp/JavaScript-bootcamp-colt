@@ -28,57 +28,58 @@ function drawCard(deck) {
 // // draw a random card from the deck
 // const card1 = drawCard(myDeck)
 
-const myDeck = {
-  deck: [],
-  drawnCards: [],
-  suits: ['hearts', 'diamonds', 'spades', 'clubs'],
-  values: '2,3,4,5,6,7,8,9,10,J,Q,K,A',
-  // method that updates the deck property
-  initializeDeck() {
-    const {suits, values, deck} = this
-    for(let value of values.split(',')) {
-      for (let suit of suits) {
-        deck.push({
-          value,
-          suit
-        })
+const makeDeck = () => {
+  // return deck object
+  return {
+    deck: [],
+    drawnCards: [],
+    suits: ['hearts', 'diamonds', 'spades', 'clubs'],
+    values: '2,3,4,5,6,7,8,9,10,J,Q,K,A',
+    // method that updates the deck property
+    initializeDeck() {
+      const {suits, values, deck} = this
+      for(let value of values.split(',')) {
+        for (let suit of suits) {
+          deck.push({
+            value,
+            suit
+          })
+        }
       }
-    }
-    // don't need to return the deck since it is now a property of the object
-  },
-  drawCard() {
-    // removes a card off the end of the deck property array on this object
-    const card = this.deck.pop()
-    this.drawnCards.push(card);
-    return card;
-  },
-  drawMultiple(numCards) {
-    const cards = [];
-    for(let i = 0; i < numCards; i++) {
-      cards.push(this.drawCard());
-    }
-    return cards;
-  },
-  shuffle() {
-    const {deck} = this;
-    // loop over array backwards
-    for (let i = deck.length - 1; i > 0; i--) {
-      // pick random index before current element
-      let j = Math.floor(Math.random() * (i + 1));
-      // swap elements
-      [deck[i], deck[j]] = [deck[j], deck[i]];
+      // don't need to return the deck since it is now a property of the object
+    },
+    drawCard() {
+      // removes a card off the end of the deck property array on this object
+      const card = this.deck.pop()
+      this.drawnCards.push(card);
+      return card;
+    },
+    drawMultiple(numCards) {
+      const cards = [];
+      for(let i = 0; i < numCards; i++) {
+        cards.push(this.drawCard());
+      }
+      return cards;
+    },
+    shuffle() {
+      const {deck} = this;
+      // loop over array backwards
+      for (let i = deck.length - 1; i > 0; i--) {
+        // pick random index before current element
+        let j = Math.floor(Math.random() * (i + 1));
+        // swap elements
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
     }
   }
 }
 
-// shuffle deck of cards
-// function shuffle(arr) {
-//   // loop over array backwards
-//   for (let i = arr.length - 1; i > 0; i--) {
-//     // pick random index before current element
-//     let j = Math.floor(Math.random() * (i + 1));
-//     // swap elements
-//     [arr[i], arr[j]] = [arr[j], arr[i]];
-//     console.log(arr)
-//   }
-// }
+// deck factory - create multiple different decks by creating a function that returns an object
+const myDeck = makeDeck();
+myDeck.initializeDeck();
+myDeck.shuffle();
+const h1 = myDeck.drawMultiple(2);
+const h3 = myDeck.drawMultiple(4);
+
+const deck2 = makeDeck();
+deck2.initializeDeck();
