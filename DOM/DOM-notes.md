@@ -7,7 +7,7 @@
 - load up a webpage, the DOM is created, all stored in the Document object
   - document.all property lists all the elements on the page- each element is itself an object
 
-- *selecting* an element, then perform a task on that element- manipulate that element
+*Selecting* an element, then perform a task on that element- manipulate that element
 
 - *HTMLCollection*: array like object that is not actually an array, HTML collection of objects
   - array methods do NOT work on this HTMLCollection, can access invidiual elements using index position bracket notation
@@ -24,3 +24,14 @@
 - **querySelector** - newer all in one method to select a single element, pass in CSS selector
  - can pass it a tag name or a class or id name using . or #
  - document.querySelectorAll will return all the matching elements in a *NodeList*
+
+*Manuipulting* elements
+- changing the text of elements
+- **innerText** - returns the inner text of an element, all of the text inside of it including all text of nested elements
+- **textContent** - includes all the text including spaces and text from a script tag
+- changing the HTML
+- **innerHTML** returns the any inner HTML tags nested inside the element, including the content
+
+Altering styles - can use **style** property only if style was assigned inline and not in a separate file
+
+Retrieve current style value using **getComputedStyle**
