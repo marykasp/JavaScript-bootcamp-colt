@@ -17,7 +17,7 @@ const itemsUl = document.querySelector('#items');
 
 addItemInput.addEventListener('keypress', function(event) {
   if(event.key === 'Enter') {
-    if(!this.value) return;
+    if(!this.value) return
     // add a new item to list
     // get value of input field save in a variable
     const newItemText = this.value;
